@@ -5,8 +5,9 @@ import { Provider } from "react-redux";
 import ReduxThunk from "redux-thunk";
 import reducers from "./src/reducers";
 
-import { Header } from "./src/components/common";
-import RecentTracksList from "./src/components/RecentTracksList";
+// import { Header } from "./src/components/common";
+// import RecentTracksList from "./src/components/RecentTracksList";
+import LoginForm from "./src/components/LoginForm";
 
 export default class App extends React.Component {
   render() {
@@ -15,9 +16,12 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
+          <LoginForm />
+        </View>
+        {/* <View style={styles.container}>
           <Header headerText="Last FM" backgroundColor="#000" />
           <RecentTracksList />
-        </View>
+        </View> */}
       </Provider>
     );
   }

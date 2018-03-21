@@ -17,15 +17,11 @@ class RecentTracksList extends Component {
     this.props.getRecentTracks();
   }
 
-  onPress() {
+  onRefresh = () => {
     this.props.getRecentTracks();
-  }
+  };
 
-  onRefresh() {
-    this.props.getRecentTracks();
-  }
-
-  renderTracks() {
+  renderTracks = () => {
     if (this.props.recentTracks.recentTracks == undefined) {
       return;
     }
@@ -46,7 +42,7 @@ class RecentTracksList extends Component {
           refreshControl={
             <RefreshControl
               refreshing={this.props.loadingRecentTracks || false}
-              onRefresh={this.onRefresh.bind(this)}
+              onRefresh={this.onRefresh)}
             />
           }
         >

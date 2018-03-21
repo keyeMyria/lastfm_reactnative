@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 import RecentTracksReducer from "./RecentTracksReducer";
+import LoginReducer from "./LoginReducer.js";
 
 export default combineReducers({
-  recentTracks: RecentTracksReducer
+  recentTracks: RecentTracksReducer,
+  user: LoginReducer
 });
