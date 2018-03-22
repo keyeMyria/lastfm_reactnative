@@ -9,40 +9,36 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import { getRecentTracks } from "../actions/RecentTracksAction";
+import { getRecentTracks } from "../../actions/RecentTracksAction";
 import RecentTracksItem from "./RecentTracksItem";
 
 class RecentTracksList extends Component {
   componentDidMount() {
-    this.props.getRecentTracks();
+    this.props.getRecentTracks(this.props.user.user);
   }
 
   onRefresh = () => {
-    this.props.getRecentTracks();
+    this.props.getRecentTracks(this.props.user.user);
   };
 
   renderTracks = () => {
-    if (this.props.recentTracks.recentTracks == undefined) {
+    if (this.props.recentTracks.recentTracks === undefined) {
       return;
     }
 
     return this.props.recentTracks.recentTracks.map((track, index) => (
       <RecentTracksItem key={index} track={track} />
     ));
-  }
+  };
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View>
-          <Text style={styles.titleStyle}>Recently Played Tracks</Text>
-        </View>
-
         <ScrollView
           refreshControl={
             <RefreshControl
               refreshing={this.props.loadingRecentTracks || false}
-              onRefresh={this.onRefresh)}
+              onRefresh={this.onRefresh}
             />
           }
         >
@@ -64,8 +60,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = ({ recentTracks, loadingRecentTracks }) => {
-  return { recentTracks, loadingRecentTracks };
+const mapStateToProps = ({ recentTracks, loadingRecentTracks, user }) => {
+  return { recentTracks, loadingRecentTracks, user };
 };
 
 export default connect(mapStateToProps, { getRecentTracks })(RecentTracksList);

@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
-import { saveUser } from "../actions/LoginAction.js";
+import { StackNavigator } from "react-navigation";
+
+import { saveUser } from "../../actions/LoginAction.js";
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "" };
+    this.state = { text: "ottoman153" };
   }
 
   login = () => {
-    this.props.saveUser(this.state.text);
+    this.props.saveUser(this.state.text, this.props.navigation);
   };
 
   render() {

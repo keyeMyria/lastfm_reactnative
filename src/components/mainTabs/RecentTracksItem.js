@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { formatDate } from "../helpers/dataFormat";
+import { formatDate } from "../../helpers/dataFormat";
 
 const RecentTracksItem = props => {
   const { track } = props;
